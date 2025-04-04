@@ -1,0 +1,266 @@
+/* Base layout */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+  transition: background 1s ease;
+  color: white;
+}
+
+#debug-banner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 0.9em;
+  padding: 6px 0;
+  text-align: center;
+  z-index: 10000;
+  display: none;
+}
+
+body.debug #debug-banner {
+  display: block;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  padding: 40px 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+body.ready .container {
+  opacity: 1;
+}
+
+/* Time and text */
+h1 {
+  font-size: 2em;
+  margin: 0 0 20px 0;
+}
+
+#sri-lanka-time {
+  white-space: nowrap;
+  display: inline-block;
+  font-size: 4em;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.ampm {
+  font-size: 0.3em;
+  position: relative;
+  top: -0.2em;
+  margin-left: -2px;
+  opacity: 0.75;
+}
+
+.diff {
+  font-size: 1.2em;
+  opacity: 0.85;
+  margin-top: 20px;
+}
+
+/* Themes */
+body.day {
+  background: linear-gradient(to top, #87ceeb, #f9d976);
+  background-color: #f9d976;
+}
+
+body.night {
+  background: linear-gradient(to top, #0f2027, #203a43, #2c5364);
+  background-color: #0f2027;
+}
+
+/* Sun and Moon */
+#sky-object {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+body.day #sky-object {
+  background: radial-gradient(circle at center, #FFD700, #FFA500);
+  box-shadow: 0 0 30px 10px rgba(255, 223, 0, 0.5);
+}
+
+body.night #sky-object {
+  background: radial-gradient(circle at 60% 40%, #f0f0f0 60%, #dcdcdc 100%);
+  overflow: hidden;
+  animation: float 3s ease-in-out infinite, moonGlow 6s ease-in-out infinite;
+}
+
+body.night #sky-object::before,
+body.night #sky-object::after {
+  content: '';
+  position: absolute;
+  background: rgba(200, 200, 200, 0.4);
+  border-radius: 50%;
+}
+
+body.night #sky-object::before {
+  width: 18px;
+  height: 18px;
+  top: 20%;
+  left: 25%;
+  box-shadow:
+    30px 10px 0 0 rgba(200, 200, 200, 0.3),
+    50px 40px 0 0 rgba(200, 200, 200, 0.35),
+    10px 50px 0 0 rgba(200, 200, 200, 0.2);
+}
+
+body.night #sky-object::after {
+  width: 10px;
+  height: 10px;
+  top: 60%;
+  left: 50%;
+  box-shadow:
+    -20px -10px 0 0 rgba(200, 200, 200, 0.25),
+    25px -5px 0 0 rgba(200, 200, 200, 0.2);
+}
+
+/* Stars */
+#sky-effects {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2.5s infinite ease-in-out alternate;
+  opacity: 0.6;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  box-shadow: 0 0 6px 2px white;
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: shoot 1s ease-out forwards;
+}
+
+/* Animations */
+@keyframes shoot {
+  0% { transform: translate(0, 0) rotate(45deg); opacity: 1; }
+  100% { transform: translate(-400px, 400px) rotate(45deg); opacity: 0; }
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes moonGlow {
+  0% {
+    box-shadow: inset -6px -6px 20px rgba(0, 0, 0, 0.2),
+                0 0 10px 4px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: inset -6px -6px 20px rgba(0, 0, 0, 0.2),
+                0 0 30px 10px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    box-shadow: inset -6px -6px 20px rgba(0, 0, 0, 0.2),
+                0 0 10px 4px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Loader styles */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #f9d976;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Earth animation */
+.earth {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #3ca4dc 60%, #2a7ebd);
+  position: relative;
+  animation: spin 6s linear infinite;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.land {
+  position: absolute;
+  background: #6fba6f;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.land1 { width: 20px; height: 20px; top: 20%; left: 15%; }
+.land2 { width: 25px; height: 15px; top: 50%; left: 40%; }
+.land3 { width: 18px; height: 18px; top: 30%; left: 60%; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+#footer {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9em;
+  color: white;
+  z-index: 100;
+}
+
+#footer i.fas.fa-heart {
+  color: #FF007F;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+#footer a {
+  color: #8E94F2;
+  text-decoration: none;
+  font-weight: bold;
+}
