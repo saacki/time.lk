@@ -93,7 +93,7 @@ You can simulate being ahead/behind using:
 
 ---
 
-## Accuracy & Logic
+## 🎯 Accuracy & Logic
 
 - **True SLT**: The time shown on time.lk is fetched from a backend service that does **not rely on the client or the server's local system time**.
 - **Source**: The backend fetches time from [`worldtimeapi.org`](https://worldtimeapi.org/) using Colombo (Asia) timezone.
@@ -132,4 +132,4 @@ MIT License. Free to use and modify. © 2025 [Sachi](https://sachi.lk)
 
 ---
 
-🧡 _Made with love for accuracy and aesthetic._
+🩷 _Made with love for accuracy and aesthetic._
