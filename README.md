@@ -12,7 +12,7 @@ Unlike traditional clocks that rely on the client’s or server’s system time,
 2. **Latency measured**, time adjusted based on roundtrip delay  
 3. **Displayed time is independent of user's local clock**  
 
-✅ This ensures **maximum accuracy**, even if the client or server clocks are incorrect.
+This ensures **maximum accuracy**, even if the client or server clocks are incorrect.
 
 ---
 
