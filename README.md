@@ -93,6 +93,16 @@ You can simulate being ahead/behind using:
 
 ---
 
+## Accuracy & Logic
+
+- **True SLT**: The time shown on time.lk is fetched from a backend service that does **not rely on the client or the server's local system time**.
+- **Source**: The backend fetches time from [`worldtimeapi.org`](https://worldtimeapi.org/) using Colombo (Asia) timezone.
+- **Fallback**: If the main API fails, the backend automatically retries using a **backup API** like [`timeapi.io`](https://timeapi.io/), ensuring time continuity even during outages.
+- **Latency Compensation**: The backend measures the time delay between request and response, and compensates for it, improving accuracy further.
+- **Client Display**: The fetched time is then displayed on the frontend and updated every second using JavaScript — without relying on the user's system clock.
+
+---
+
 ## 🖥️ Technologies Used
 
 - HTML5 + CSS3 (no frameworks)
