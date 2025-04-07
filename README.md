@@ -82,7 +82,7 @@ When users visit `time.lk`, their local time is compared to SLT:
 
 - SLT offset is always +330 minutes (UTC+5:30)
 - Local offset is taken from `new Date().getTimezoneOffset()`
-- The result is shown as "Sri Lanka is X hour(s) and Y minute(s) ahead/behind you."
+- The result is shown as "Sri Lanka is X hour(s) and Y minute(s) ahead/behind you"
 
 You can simulate being ahead/behind using:
 
