@@ -1,6 +1,6 @@
-# ⏰ Sri Lanka Time — [time.lk](https://time.lk)
+# ⏰ Sri Lanka Time ([time.lk](https://time.lk))
 
-A beautifully minimal, accurate Sri Lanka time display. Built with HTML, CSS, and JavaScript — featuring smooth day/night transitions, animated sun/moon, and an API for developers.
+A beautifully minimal, accurate Sri Lanka time display. Built with HTML, CSS, and JavaScript, featuring smooth day/night transitions, animated sun/moon, and an API for developers.
 
 ---
 
