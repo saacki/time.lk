@@ -17,7 +17,7 @@ This ensures **maximum accuracy**, even if the client or server clocks are incor
 ---
 
 ## 🌐 Live Site  
-👉 Visit: [https://time.lk](https://time.lk)
+Visit: [https://time.lk](https://time.lk)
 
 ---
 
