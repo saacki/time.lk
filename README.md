@@ -6,7 +6,7 @@ A beautifully minimal, accurate Sri Lanka time display. Built with HTML, CSS, an
 
 ## 🔧 How It Works
 
-Unlike traditional clocks that rely on the client’s or server’s system time, `time.lk` fetches official time from a **world time API**, calculates the roundtrip latency, and adjusts the result accordingly:
+Unlike traditional clocks that rely on the client’s or server’s system time, `time.lk` fetches official time from a **world time API/ TimeAPI.io**, calculates the roundtrip latency, and adjusts the result accordingly:
 
 1. **Client request → API timestamped**  
 2. **Latency measured**, time adjusted based on roundtrip delay  
@@ -99,6 +99,7 @@ You can simulate being ahead/behind using:
 - Vanilla JavaScript
 - Font Awesome for icons
 - WorldTimeAPI (via proxy)
+- TimeAPI.io (via proxy) (backup)
 
 ---
 
