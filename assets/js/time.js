@@ -5,8 +5,8 @@ let tickingDebug = false;
 let simulatedClientOffset = null;
 let forceSLTDebug = false;
 let aheadBehindDebug = false;
-let aheadBehindLabel = '';
 let persistentLabel = '';
+let lastRenderedTime = '';
 
 function updateSriLankaTime() {
   const debugHandled = handleDebugModes();
@@ -27,16 +27,30 @@ function updateSriLankaTime() {
 
       cachedSLTime = new Date(cachedSLTime.getTime() + delay / 2);
 
+      hideRefreshButton();
       renderSriLankaTime(cachedSLTime, debugActive);
     })
     .catch(() => {
-      document.getElementById('sri-lanka-time').textContent = '--:--:--';
-      document.getElementById('time-difference').textContent = 'Unable to fetch time.';
-      document.body.classList.add('day', 'ready', 'debug');
-      document.body.classList.remove('night');
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#f9d976');
-      hideLoader();
-    });
+  document.getElementById('sri-lanka-time').textContent = '--:--:--';
+
+  const fallbackMsg = debugActive && persistentLabel
+    ? `Debug mode: ${persistentLabel} and API error`
+    : 'Unable to fetch time';
+
+  document.getElementById('time-difference').innerHTML = fallbackMsg;
+
+  document.body.classList.add('day', 'ready', 'debug');
+  document.body.classList.remove('night');
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#f9d976');
+
+  if (debugActive && persistentLabel) {
+    showDebugBanner();
+    hideReturnButton();
+  }
+  
+  showRefreshButton();
+  hideLoader();
+});
 }
 
 function handleDebugModes() {
@@ -99,6 +113,7 @@ function handleDebugModes() {
     document.body.classList.add('day', 'ready', 'debug');
     document.body.classList.remove('night');
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#f9d976');
+    showRefreshButton();
     hideLoader();
     showDebugBanner();
     return true;
@@ -108,7 +123,7 @@ function handleDebugModes() {
     const offset = parseFloat(debug.split('=')[1]);
     simulatedClientOffset = -offset * 60;
     aheadBehindDebug = true;
-    persistentLabel = `Sri Lanka is ${offset} hour(s) ahead of you.`;
+    persistentLabel = `Sri Lanka is ${offset} hour(s) ahead of you`;
     return false;
   }
 
@@ -116,43 +131,42 @@ function handleDebugModes() {
     const offset = parseFloat(debug.split('=')[1]);
     simulatedClientOffset = offset * 60;
     aheadBehindDebug = true;
-    persistentLabel = `Sri Lanka is ${offset} hour(s) behind you.`;
+    persistentLabel = `Sri Lanka is ${offset} hour(s) behind you`;
     return false;
   }
 
-  const fixedTimes = {
-    day: 9,
-    night: 22,
-    static: 14
-  };
+  const fixedTimes = { day: 9, night: 22, static: 14 };
 
   if (debug === 'slow') {
     forceSLTDebug = true;
     simTime.setHours(11, 30, 0, 0);
     persistentLabel = 'Simulating slow load';
-    setTimeout(() => {
-      renderSriLankaTime(simTime, true);
-    }, 3000);
+    setTimeout(() => renderSriLankaTime(simTime, true), 3000);
     return true;
   }
-  
+
   if (debug === 'earth') {
-  document.body.classList.remove('day', 'night');
-  document.body.classList.add('debug');
-  document.getElementById('loader')?.classList.remove('hidden');
-  document.querySelector('.container')?.classList.remove('ready');
-  return true;
-}
+    document.body.classList.remove('day', 'night');
+    document.body.classList.add('debug');
+    document.getElementById('loader')?.classList.remove('hidden');
+    document.querySelector('.container')?.classList.remove('ready');
+    return true;
+  }
 
   if (debug in fixedTimes) {
-  simTime.setHours(fixedTimes[debug], 30, 0, 0);
-  forceSLTDebug = true;
-  persistentLabel = `Simulating ${debug} theme`;
-  renderSriLankaTime(simTime, true);
-  return true;
-}
+    simTime.setHours(fixedTimes[debug], 30, 0, 0);
+    forceSLTDebug = true;
+    persistentLabel = `Simulating ${debug} theme`;
+    renderSriLankaTime(simTime, true);
+    return true;
+  }
 
-  return false;
+// Handle unknown debug modes
+const safeDebug = debug.replace(/[^a-zA-Z0-9=\-]/g, '');
+persistentLabel = `Invalid code "<strong>${safeDebug}</strong>"`;
+forceSLTDebug = true;
+return false;
+
 }
 
 function renderSriLankaTime(sriLankaTime, isDebug) {
@@ -162,9 +176,12 @@ function renderSriLankaTime(sriLankaTime, isDebug) {
   const seconds = String(sriLankaTime.getSeconds()).padStart(2, '0');
   const ampm = hour >= 12 ? 'pm' : 'am';
   const displayHour = String((hour % 12 || 12)).padStart(2, '0');
+  const timeString = `${displayHour}:${minutes}:${seconds}<span class="ampm">${ampm}</span>`;
 
-  document.getElementById('sri-lanka-time').innerHTML =
-    `${displayHour}:${minutes}:${seconds}<span class="ampm">${ampm}</span>`;
+  if (lastRenderedTime === timeString && !isDebug) return;
+  lastRenderedTime = timeString;
+
+  document.getElementById('sri-lanka-time').innerHTML = timeString;
 
   setTheme(hour);
   generateStarrySky(hour);
@@ -172,7 +189,7 @@ function renderSriLankaTime(sriLankaTime, isDebug) {
 
   if (isDebug || aheadBehindDebug) {
     if (persistentLabel) {
-      document.getElementById('time-difference').textContent = `Debug mode: ${persistentLabel}`;
+      document.getElementById('time-difference').innerHTML = `Debug mode: ${persistentLabel}`;
     }
     showDebugBanner();
   } else {
@@ -197,7 +214,7 @@ function showTimeDifference(realClientTime) {
   const ahead = clientOffset > 0;
   const msg = clientOffset === 0
     ? "You're in the same timezone as Sri Lanka."
-    : `Sri Lanka is ${hours} hour(s) and ${minutes} minute(s) ${ahead ? 'ahead' : 'behind'} of you.`;
+    : `Sri Lanka is ${hours} hour(s) and ${minutes} minute(s) ${ahead ? 'ahead' : 'behind'} of you`;
 
   document.getElementById('time-difference').textContent = msg;
 }
@@ -240,6 +257,25 @@ function hideLoader() {
 function showDebugBanner() {
   document.getElementById('debug-banner').style.display = 'block';
   document.body.classList.add('debug');
+
+  // Only show return button if NOT in error mode
+  const params = new URLSearchParams(window.location.search);
+  const debug = params.get('test');
+  if (debug !== 'error') {
+    document.getElementById('return-button')?.classList.remove('hidden');
+  }
+}
+
+function hideReturnButton() {
+  document.getElementById('return-button')?.classList.add('hidden');
+}
+
+function showRefreshButton() {
+  document.getElementById('refresh-button')?.classList.remove('hidden');
+}
+
+function hideRefreshButton() {
+  document.getElementById('refresh-button')?.classList.add('hidden');
 }
 
 setInterval(() => {
