@@ -114,6 +114,37 @@ body.ready #top-links {
   opacity: 1;
 }
 
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container .tooltip {
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75em;
+  position: absolute;
+  top: 130%;
+  right: 0;
+  transform: none;
+  z-index: 10003;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+.tooltip-container:hover .tooltip,
+.tooltip-container:focus-within .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
 .container {
   position: relative;
   z-index: 2;
