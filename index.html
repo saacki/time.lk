@@ -4,8 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sri Lanka Time</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=2.09" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sri Lanka Time">
+  <meta property="og:description" content="Sri Lanka Time">
+  <meta property="og:url" content="https://time.lk">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://time.lk/assets/img/fav/apple-touch-icon.png?v=2a">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://time.lk/assets/img/fav/favicon-32x32.png?v=2a">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://time.lk/assets/img/fav/android-chrome-192x192.png?v=2a">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://time.lk/assets/img/fav/favicon-16x16.png?v=2a">
+  <link rel="manifest" href="https://time.lk/assets/img/fav/site.webmanifest?v=2a">
+  <link rel="mask-icon" href="https://time.lk/assets/img/fav/safari-pinned-tab.svg?v=2a" color="#f9d976">
+  <link rel="shortcut icon" href="https://time.lk/assets/img/fav/favicon.ico?v=2b">
+  <link rel="stylesheet" href="assets/css/style.css?v=3.03" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
   <meta name="theme-color" content="#f9d976" id="theme-color-meta">
 </head>
 <body>
@@ -18,9 +29,28 @@
     </div>
   </div>
 
-<div id="debug-banner" class="debug-banner" style="display: none;">
-  Debug Mode Active
+  <!-- Debug Banner -->
+  <div id="debug-banner" class="debug-banner" style="display: none;">
+    Debug Mode Active
+  </div>
+  
+  <!-- Top links -->
+  <div id="top-links">
+  <a href="https://github.com/saacki/time.lk" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="https://app.time.lk/api" target="_blank"><i class="fas fa-code"></i></a>
 </div>
+  
+  <!-- Return button -->
+  <div id="return-button" class="return-container hidden">
+  <button onclick="location.href='https://time.lk'">
+    <i class="fas fa-arrow-left"></i> Return
+  </button>
+</div>
+
+  <!-- Refresh Button -->
+  <div id="refresh-button" class="refresh-container hidden">
+    <button onclick="location.reload()"><i class="fas fa-sync-alt"></i> Refresh</button>
+  </div>
 
   <!-- Main UI -->
   <div class="container">
@@ -30,11 +60,14 @@
     <div id="sri-lanka-time">--:--:--</div>
     <div id="time-difference" class="diff">Calculating time difference...</div>
   </div>
-<div id="footer">
-  <p>
-    made with <i class="fas fa-heart"></i>
-    by <a href="https://sachi.lk">sachi</a>
-  </p>
-</div>
-  <script src="assets/js/time.js?v=2.22"></script>
+
+  <!-- Footer -->
+  <div id="footer">
+    <p>
+      made with <i class="fas fa-heart"></i>
+      by <a href="https://sachi.lk">sachi</a>
+    </p>
+  </div>
+
+  <script src="assets/js/time.js?v=3.01"></script>
 </html>
