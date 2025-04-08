@@ -1,3 +1,4 @@
+// js version 3.10
 let currentSky = '';
 let cachedSLTime = null;
 let debugActive = false;
@@ -161,7 +162,6 @@ function handleDebugModes() {
     return true;
   }
 
-// Handle unknown debug modes
 const safeDebug = debug.replace(/[^a-zA-Z0-9=\-]/g, '');
 persistentLabel = `Invalid code "<strong>${safeDebug}</strong>"`;
 forceSLTDebug = true;
@@ -258,7 +258,6 @@ function showDebugBanner() {
   document.getElementById('debug-banner').style.display = 'block';
   document.body.classList.add('debug');
 
-  // Only show return button if NOT in error mode
   const params = new URLSearchParams(window.location.search);
   const debug = params.get('test');
   if (debug !== 'error') {
