@@ -1,4 +1,4 @@
-/* Base layout */
+/* css version 3.10 */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -54,6 +54,7 @@ body.debug #debug-banner {
   cursor: pointer;
   border-radius: 6px;
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   transition: background 0.3s ease;
 }
 
@@ -91,7 +92,7 @@ body.night .return-container button:hover {
 
 #top-links {
   position: fixed;
-  top: 38px;
+  top: 38.5px;
   right: 30px;
   z-index: 10002;
   display: none;
@@ -137,6 +138,8 @@ body.ready #top-links {
   cursor: pointer;
   white-space: nowrap;
   max-width: 200px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .tooltip-container:hover .tooltip,
@@ -157,7 +160,6 @@ body.ready .container {
   opacity: 1;
 }
 
-/* Time and text */
 h1 {
   font-size: 2em;
   margin: 0 0 20px 0;
@@ -186,7 +188,6 @@ h1 {
   margin-top: 20px;
 }
 
-/* Themes */
 body.day {
   background: linear-gradient(to top, #87ceeb, #f9d976);
   background-color: #f9d976;
@@ -197,7 +198,6 @@ body.night {
   background-color: #0f2027;
 }
 
-/* Sun and Moon */
 #sky-object {
   width: 80px;
   height: 80px;
@@ -249,7 +249,6 @@ body.night #sky-object::after {
     25px -5px 0 0 rgba(200, 200, 200, 0.2);
 }
 
-/* Stars */
 #sky-effects {
   position: fixed;
   top: 0;
@@ -282,7 +281,6 @@ body.night #sky-object::after {
   animation: shoot 1s ease-out forwards;
 }
 
-/* Animations */
 @keyframes shoot {
   0% { transform: translate(0, 0) rotate(45deg); opacity: 1; }
   100% { transform: translate(-400px, 400px) rotate(45deg); opacity: 0; }
@@ -314,7 +312,6 @@ body.night #sky-object::after {
   }
 }
 
-/* Loader styles */
 .loader {
   position: fixed;
   top: 0;
@@ -335,7 +332,6 @@ body.night #sky-object::after {
   visibility: hidden;
 }
 
-/* Earth animation */
 .earth {
   width: 80px;
   height: 80px;
@@ -382,4 +378,10 @@ body.night #sky-object::after {
   color: #8E94F2;
   text-decoration: none;
   font-weight: bold;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .tooltip-container .tooltip {
+    display: none !important;
+  }
 }
