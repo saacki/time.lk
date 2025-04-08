@@ -39,7 +39,7 @@ You can simulate different themes, time states, or errors by adding query parame
 | `?test=ahead=3`        | Simulates your local time being **3 hours ahead** of Sri Lanka              |
 | `?test=behind=5.5`     | Simulates your local time being **5.5 hours behind** Sri Lanka               |
 | `?test=earth`          | Shows animated Earth loader only                                            |
-| `?test=anythingelse`   | Invalid debug code — displays default SLT and a debug warning banner        |
+| `?test=anythingelse`   | Invalid debug code - displays static SLT and a debug warning banner        |
 
 ---
 
