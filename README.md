@@ -126,10 +126,4 @@ You can simulate being ahead/behind using:
 
 ---
 
-## 📜 License
-
-MIT License. Free to use and modify. © 2025 [sachi](https://sachi.lk)
-
----
-
 🩷 _Made with love for accuracy and aesthetic._
