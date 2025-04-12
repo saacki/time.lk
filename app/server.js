@@ -205,7 +205,7 @@ fetchSLTime();
 setInterval(fetchSLTime, 86400000);
 setInterval(() => {
   logHeartbeat('Heartbeat: Server is alive.');
-}, 30000);
+}, 5000);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
