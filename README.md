@@ -16,11 +16,6 @@ This ensures **maximum accuracy**, even if the client or server clocks are incor
 
 ---
 
-## 🌐 Live Site  
-Visit: [https://time.lk](https://time.lk)
-
----
-
 ## 🐛 Debug Modes
 
 You can simulate different themes, time states, or errors by adding query parameters like `?test=flip-day` to the URL.
