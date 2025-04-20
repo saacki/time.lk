@@ -16,28 +16,6 @@ This ensures **maximum accuracy**, even if the client or server clocks are incor
 
 ---
 
-## 🐛 Debug Modes
-
-You can simulate different themes, time states, or errors by adding query parameters like `?test=flip-day` to the URL.
-
-| Debug Mode             | Description                                                                 |
-|------------------------|-----------------------------------------------------------------------------|
-| `?test=flip-day`       | Live transition from night to day in 30s                                    |
-| `?test=flip-night`     | Live transition from day to night in 30s                                    |
-| `?test=theme-day`      | Forces day theme                                                            |
-| `?test=theme-night`    | Forces night theme                                                          |
-| `?test=static`         | Shows fixed time (2:30 PM)                                                  |
-| `?test=day`            | Simulates 9:30 AM                                                           |
-| `?test=night`          | Simulates 10:30 PM                                                          |
-| `?test=slow`           | Simulates slow loading (delay before showing clock)                         |
-| `?test=error`          | Simulates API failure (shows refresh button)                                |
-| `?test=ahead=3`        | Simulates your local time being **3 hours ahead** of Sri Lanka              |
-| `?test=behind=5.5`     | Simulates your local time being **5.5 hours behind** Sri Lanka               |
-| `?test=earth`          | Shows animated Earth loader only                                            |
-| `?test=anythingelse`   | Invalid debug code - displays static SLT and a debug warning banner        |
-
----
-
 ## 📡 Public API
 
 You can use the time.lk backend to get the current Sri Lanka Time in JSON format:
@@ -65,6 +43,29 @@ https://app.time.lk/api
   "dayOfWeek": "Monday",
   "dstActive": false
 }
+
+---
+
+## 🐛 Debug Modes
+
+You can simulate different themes, time states, or errors by adding query parameters like `?test=flip-day` to the URL.
+
+| Debug Mode             | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| `?test=flip-day`       | Live transition from night to day in 30s                                    |
+| `?test=flip-night`     | Live transition from day to night in 30s                                    |
+| `?test=theme-day`      | Forces day theme                                                            |
+| `?test=theme-night`    | Forces night theme                                                          |
+| `?test=static`         | Shows fixed time (2:30 PM)                                                  |
+| `?test=day`            | Simulates 9:30 AM                                                           |
+| `?test=night`          | Simulates 10:30 PM                                                          |
+| `?test=slow`           | Simulates slow loading (delay before showing clock)                         |
+| `?test=error`          | Simulates API failure (shows refresh button)                                |
+| `?test=ahead=3`        | Simulates your local time being **3 hours ahead** of Sri Lanka              |
+| `?test=behind=5.5`     | Simulates your local time being **5.5 hours behind** Sri Lanka               |
+| `?test=earth`          | Shows animated Earth loader only                                            |
+| `?test=anythingelse`   | Invalid debug code - displays static SLT and a debug warning banner        |
+
 ```
 
 You can append `?ts=123456789` to bypass caching if needed.
