@@ -43,6 +43,9 @@ https://app.time.lk/api
   "dayOfWeek": "Monday",
   "dstActive": false
 }
+```
+
+You can append `?ts=123456789` to bypass caching if needed.
 
 ---
 
@@ -65,10 +68,6 @@ You can simulate different themes, time states, or errors by adding query parame
 | `?test=behind=5.5`     | Simulates your local time being **5.5 hours behind** Sri Lanka               |
 | `?test=earth`          | Shows animated Earth loader only                                            |
 | `?test=anythingelse`   | Invalid debug code - displays static SLT and a debug warning banner        |
-
-```
-
-You can append `?ts=123456789` to bypass caching if needed.
 
 ---
 
