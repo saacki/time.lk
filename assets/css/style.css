@@ -1,4 +1,4 @@
-/* css version 3.10 */
+/* css version 3.12 */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -196,6 +196,11 @@ body.day {
 body.night {
   background: linear-gradient(to top, #0f2027, #203a43, #2c5364);
   background-color: #0f2027;
+}
+
+body.day #sri-lanka-time,
+body.day h1 {
+  color: #fcfcfc;
 }
 
 #sky-object {
