@@ -1,94 +1,100 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sri Lanka Time</title>
-  <meta name="title" content="Sri Lanka Time">
-  <meta name="description" content="Live Sri Lanka Time with automatic syncing and timezone comparison. Made with love by Sachi.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Sri Lanka Time">
-  <meta property="og:description" content="Live Sri Lanka Time with automatic syncing and timezone comparison. Made with love by Sachi.">
-  <meta property="og:url" content="https://time.lk">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://time.lk/assets/img/fav/apple-touch-icon.png?v=2a">
-  <link rel="icon" type="image/png" sizes="32x32" href="https://time.lk/assets/img/fav/favicon-32x32.png?v=2a">
-  <link rel="icon" type="image/png" sizes="192x192" href="https://time.lk/assets/img/fav/android-chrome-192x192.png?v=2a">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://time.lk/assets/img/fav/favicon-16x16.png?v=2a">
-  <link rel="manifest" href="https://time.lk/assets/img/fav/site.webmanifest?v=2a">
-  <link rel="mask-icon" href="https://time.lk/assets/img/fav/safari-pinned-tab.svg?v=2a" color="#f9d976">
-  <link rel="shortcut icon" href="https://time.lk/assets/img/fav/favicon.ico?v=2b">
-  <link rel="stylesheet" href="assets/css/style.css?v=3.12" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
-  <meta name="theme-color" content="#f9d976" id="theme-color-meta">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sri Lanka Time</title>
+    <meta name="title" content="Sri Lanka Time">
+    <meta name="description" content="Live Sri Lanka Time with automatic syncing and timezone comparison. Made with love by Sachi.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sri Lanka Time">
+    <meta property="og:description" content="Live Sri Lanka Time with automatic syncing and timezone comparison. Made with love by Sachi.">
+    <meta property="og:url" content="https://time.lk">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://time.lk/assets/img/fav/apple-touch-icon.png?v=2a">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://time.lk/assets/img/fav/favicon-32x32.png?v=2a">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://time.lk/assets/img/fav/android-chrome-192x192.png?v=2a">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://time.lk/assets/img/fav/favicon-16x16.png?v=2a">
+    <link rel="manifest" href="https://time.lk/assets/img/fav/site.webmanifest?v=2a">
+    <link rel="mask-icon" href="https://time.lk/assets/img/fav/safari-pinned-tab.svg?v=2a" color="#f9d976">
+    <link rel="shortcut icon" href="https://time.lk/assets/img/fav/favicon.ico?v=2b">
+    <link rel="stylesheet" href="assets/css/style.css?v=3.12" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+    <meta name="theme-color" content="#f9d976" id="theme-color-meta">
 </head>
+
 <body>
-  <!-- Loader -->
-  <div id="loader" class="loader">
-    <div class="earth">
-      <div class="land land1"></div>
-      <div class="land land2"></div>
-      <div class="land land3"></div>
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="earth">
+            <div class="land land1"></div>
+            <div class="land land2"></div>
+            <div class="land land3"></div>
+        </div>
     </div>
-  </div>
 
-  <!-- Debug Banner -->
-  <div id="debug-banner" class="debug-banner" style="display: none;">
-    Debug Mode Active
-  </div>
-  
-  <!-- Top links -->
-  <div id="top-links">
-  <!-- GitHub Tooltip -->
-  <div class="tooltip-container">
-    <a href="https://github.com/saacki/time.lk" target="_blank">
-      <i class="fab fa-github"></i>
-    </a>
-    <div class="tooltip" onclick="window.open('https://github.com/saacki/time.lk', '_blank')">GitHub Repository</div>
-  </div>
+    <!-- Debug Banner -->
+    <div id="debug-banner" class="debug-banner" style="display: none;">
+        Debug Mode Active
+    </div>
 
-  <!-- API Tooltip -->
-  <div class="tooltip-container">
-    <a href="https://app.time.lk/api" target="_blank" id="api-link">
-      <i class="fas fa-code"></i>
-    </a>
-    <div class="tooltip" onclick="window.open('https://app.time.lk/api', '_blank')">Open API link</div>
-  </div>
-</div>
-  
-  <!-- Return button -->
-  <div id="return-button" class="return-container hidden">
-  <button onclick="location.href='https://time.lk'">
-    <i class="fas fa-arrow-left"></i> Return
-  </button>
-</div>
+    <!-- Top links -->
+    <div id="top-links">
+        <!-- GitHub Tooltip -->
+        <div class="tooltip-container">
+            <a href="https://github.com/saacki/time.lk" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <div class="tooltip" onclick="window.open('https://github.com/saacki/time.lk', '_blank')">GitHub Repository</div>
+        </div>
 
-  <!-- Refresh Button -->
-  <div id="refresh-button" class="refresh-container hidden">
-    <button onclick="location.reload()"><i class="fas fa-sync-alt"></i> Refresh</button>
-  </div>
+        <!-- API Tooltip -->
+        <div class="tooltip-container">
+            <a href="https://app.time.lk/api" target="_blank" id="api-link">
+                <i class="fas fa-code"></i>
+            </a>
+            <div class="tooltip" onclick="window.open('https://app.time.lk/api', '_blank')">Open API link</div>
+        </div>
+    </div>
 
-  <!-- Main UI -->
-  <div class="container">
-    <div id="sky-object"></div>
-    <div id="sky-effects"></div>
-    <h1>Sri Lanka Time</h1>
-    <div id="sri-lanka-time">--:--:--</div>
-    <div id="time-difference" class="diff">Calculating time difference...</div>
-  </div>
+    <!-- Return button -->
+    <div id="return-button" class="return-container hidden">
+        <button onclick="location.href='https://time.lk'">
+            <i class="fas fa-arrow-left"></i> Return
+        </button>
+    </div>
 
-  <!-- Footer -->
-  <div id="footer">
-    <p>
-      made with <i class="fas fa-heart"></i>
-      by <a href="https://sachi.lk">sachi</a>
-    </p>
-  </div>
-  <script>
-  document.querySelectorAll('#top-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      link.blur();
-    });
-  });
-  </script>
-  <script src="assets/js/time.js?v=3.10"></script>
+    <!-- Refresh Button -->
+    <div id="refresh-button" class="refresh-container hidden">
+        <button onclick="location.reload()"><i class="fas fa-sync-alt"></i> Refresh</button>
+    </div>
+
+    <!-- Main UI -->
+    <div class="container">
+        <div id="sky-object"></div>
+        <div id="sky-effects"></div>
+        <h1>Sri Lanka Time</h1>
+        <div id="sri-lanka-time">--:--:--</div>
+        <div id="time-difference" class="diff">Calculating time difference...</div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+        <p>
+            made with <i class="fas fa-heart"></i>
+            by <a href="https://sachi.lk">sachi</a>
+        </p>
+    </div>
+    <script>
+        document.querySelectorAll('#top-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                link.blur();
+            });
+        });
+    </script>
+    <script src="assets/js/time.js?v=3.10"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"94273d339d9e6332","version":"2025.4.0-1-g37f21b1","r":1,"token":"af62606ff66442cbb82711d84d3435c3","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+</body>
+
 </html>
