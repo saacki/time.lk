@@ -1,4 +1,4 @@
-/* css version 3.12 */
+/* css version 3.13 */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -121,7 +121,10 @@ body.ready #top-links {
 }
 
 .tooltip-container .tooltip {
-  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   text-align: center;
@@ -131,10 +134,7 @@ body.ready #top-links {
   position: absolute;
   top: 130%;
   right: 0;
-  transform: none;
   z-index: 10003;
-  opacity: 0;
-  transition: opacity 0.3s ease;
   cursor: pointer;
   white-space: nowrap;
   max-width: 200px;
@@ -144,8 +144,9 @@ body.ready #top-links {
 
 .tooltip-container:hover .tooltip,
 .tooltip-container:focus-within .tooltip {
-  visibility: visible;
   opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .container {
